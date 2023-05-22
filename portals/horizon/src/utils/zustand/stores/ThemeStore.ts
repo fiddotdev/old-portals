@@ -6,11 +6,11 @@ export const useThemeStore = create<ThemeStore & ThemeActions>()(
   persist(
     (set) => ({
       theme: 'light',
-      setTheme: (theme: ThemeMode) => set(() => ({ theme }))
+      setTheme: (theme: ThemeMode) => set(() => ({ theme })),
     }),
     {
       name: 'theme',
-      storage: createJSONStorage(() => localStorage)
+      storage: createJSONStorage(() => localStorage),
     }
   )
-)
+);
