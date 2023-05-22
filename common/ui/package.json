@@ -13,7 +13,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src"
   },
   "peerDependencies": {
     "react": "^18.2.0"
@@ -21,7 +22,7 @@
   "devDependencies": {
     "@types/react": "^18.2.5",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
+    "eslint-config-ts": "workspace:*",
     "postcss": "^8.4.20",
     "react": "^18.2.0",
     "tailwind-config": "workspace:*",

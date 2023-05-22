@@ -7,7 +7,7 @@ Common holds packages that need to be shared between apps.
 ### [ui](./ui)
 Shared UI library
 
-### [eslint-config-custom](./eslint-config-custom)
+### [eslint-config-custom](./eslint-config-ts)
 Shared ESLint Configs
 
 ### [tailwind-config](./tailwind-config)
