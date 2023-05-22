@@ -35,8 +35,8 @@ export const FullscreenDotDisplay = () => {
           const diffY = Math.abs(mouseY - y);
           const distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
 
-          const alpha = Math.min(Math.max(5 * (1 / distance), 0.03), 0.18);
-          canvas.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+          const alpha = Math.min(Math.max(5 * (1 / distance), 0.06), 0.3);
+          canvas.fillStyle = `rgba(0, 0, 0, ${alpha})`;
 
           canvas.arc(x, y, DOT_SIZE / 2, 0, Math.PI * 2);
           canvas.fill();
