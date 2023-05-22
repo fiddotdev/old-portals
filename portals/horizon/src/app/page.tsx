@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { Button, Card, FullscreenDotDisplay } from "ui";
+import { Button, Card, FullscreenDotDisplay } from 'ui';
 
 const CARD_CONTENT = [
   {
-    title: "Caching Tasks",
-    href: "https://turbo.build/repo/docs/core-concepts/caching",
-    cta: "Read More",
+    title: 'Caching Tasks',
+    href: 'https://turbo.build/repo/docs/core-concepts/caching',
+    cta: 'Read More',
   },
   {
-    title: "Running Tasks",
-    href: "https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks",
-    cta: "Read More",
+    title: 'Running Tasks',
+    href: 'https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks',
+    cta: 'Read More',
   },
   {
-    title: "Configuration Options",
-    href: "https://turbo.build/repo/docs/reference/configuration",
-    cta: "Read More",
+    title: 'Configuration Options',
+    href: 'https://turbo.build/repo/docs/reference/configuration',
+    cta: 'Read More',
   },
 ];
 

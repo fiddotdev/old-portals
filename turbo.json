@@ -7,6 +7,7 @@
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "lint": {},
+    "lint:fix": {},
     "check-types": {},
     "dev": {
       "cache": false,
