@@ -7,7 +7,8 @@
 # - pnpm turbo run build --filter=horizon
 
 FROM node:18-alpine AS base
- 
+
+# Install PNPM & Turbo 
 FROM base AS builder
 RUN apk add --no-cache libc6-compat
 RUN apk update
@@ -28,18 +29,7 @@ COPY --from=builder /app/json/ .
 COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
 RUN pnpm install
  
-# Build the project
+# Build the project and start it
 COPY --from=builder /app/full/ .
 RUN pnpm turbo run build --filter=horizon
- 
-FROM base AS runner
-WORKDIR /app
- 
-COPY --from=installer /app/portals/horizon/next.config.js .
-COPY --from=installer /app/portals/horizon/package.json .
-COPY --from=installer /app/pnpm-lock.yaml .
-# COPY --from=installer /app/portals/horizon/.next/standalone ./
-COPY --from=installer /app/portals/horizon/.next/static ./portals/horizon/.next/static
-# COPY --from=installer /app/portals/horizon/public ./portals/horizon/public
-RUN npm install -g pnpm turbo
 CMD pnpm turbo run start --filter=horizon
