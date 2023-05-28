@@ -1,11 +1,3 @@
-# Steps:
-# - Install PNPM & Turbo (npm install -g pnpm turbo)
-# - Create a WORKDIR (/app)
-# - Copy our json & lock file to the current dir (COPY /app/json/ . && COPY /app/pnpm-lock.yaml .)
-# - Install (pnpm install)
-# - Copy our full files to our current dir (COPY /app/full/ .)
-# - pnpm turbo run build --filter=horizon
-
 FROM node:18-alpine AS base
 
 # Install PNPM & Turbo 
