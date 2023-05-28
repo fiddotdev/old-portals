@@ -8,10 +8,10 @@ export default function Home() {
   return (
     <main
       className={
-        'w-screen min-h-screen bg-light-background flex justify-center items-center'
+        'w-screen min-h-screen bg-dark-primary flex justify-center items-center'
       }
     >
-      {/*<FullscreenDotDisplay />*/}
+      <h1 className="text-6xl font-sans text-white font-bold">Portals via EBS</h1>
     </main>
   );
 }

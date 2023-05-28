@@ -30,5 +30,19 @@ if [ "$answer" != "yes" ]; then
     exit 1
 fi
 
-eb use horizon-staging
+echo "Which Environment?"
+eb list
+
+# Ask user for the environment to use
+read -p "Input environment from the list above: " env
+
+eb use "$env"
+echo "----------------------------"
+echo "Despite what the EB CLI says, please *do not* exit this. Viewing these logs and monitoring them is important"
+echo "----------------------------"
 eb deploy
+
+echo "Deployment Successful, starting cleanup"
+cd ..
+rm -rf out/
+echo "Done."
