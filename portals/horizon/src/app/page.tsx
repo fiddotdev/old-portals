@@ -11,7 +11,9 @@ export default function Home() {
         'w-screen min-h-screen bg-dark-primary flex justify-center items-center'
       }
     >
-      <h1 className="text-6xl font-sans text-white font-bold">Portals via EBS</h1>
+      <h1 className="text-6xl font-sans text-white font-bold">
+        Portals via EBS
+      </h1>
     </main>
   );
 }
