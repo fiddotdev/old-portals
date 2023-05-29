@@ -41,13 +41,14 @@ jobs:
 
     - name: Zip out directory
       run: |
-        zip -r out.zip out/ -x "*.git*"
+        cd out
+        zip -r out.zip * -x "*.git"
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: out-zipped
-        path: out.zip
+        path: out/out.zip
 
     - name: Deploy Node package to AWS Elastic Beanstalk
       uses: einaregilsson/beanstalk-deploy@v14
@@ -58,7 +59,7 @@ jobs:
         environment_name: horizon-staging
         version_label: ${{ github.sha }}
         region: us-west-1
-        deployment_package: out.zip
+        deployment_package: out/out.zip
 
     - name: Clean up
       run: |
