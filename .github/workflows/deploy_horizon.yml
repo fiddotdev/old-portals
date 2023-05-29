@@ -1,3 +1,9 @@
+# How this works:
+# First we use turborepo to prune our horizon package to only the required deps
+# After that, we move Horizon's dockerfile & related files to our out dir
+  # We do this because Elastic Beanstalk requires an artifact upload to deploy, with the Dockerfile in its root dir
+  # So we store the dockerfile/etc.. in its respective project, but during deployment move it into our out dir so its there when we package it
+# Then we build our dockerfile to ensure it'll build fine
 name: Build Docker & Deploy to EBS
 
 on:
