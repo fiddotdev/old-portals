@@ -36,8 +36,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        current_timestamp=$(date +%s)
-        docker build -t horizon:"$current_timestamp" .
+        docker build -t horizon .
 
     - name: Zip out directory
       run: |
