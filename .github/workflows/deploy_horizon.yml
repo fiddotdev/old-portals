@@ -36,6 +36,7 @@ jobs:
 
     - name: Build Docker image
       run: |
+        cd out
         docker build -t horizon .
 
     - name: Zip out directory
