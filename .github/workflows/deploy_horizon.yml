@@ -1,4 +1,4 @@
-name: Turbo Prune, Build and Deploy
+name: Build Docker & Deploy to EBS
 
 on:
   push:

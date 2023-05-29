@@ -12,7 +12,7 @@ export default function Home() {
       }
     >
       <h1 className="text-6xl font-sans text-white font-bold">
-        Portals via EBS via GH Workflows smile
+        Portals via EBS via GH Workflows
       </h1>
     </main>
   );
