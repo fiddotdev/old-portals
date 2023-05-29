@@ -1,0 +1,67 @@
+name: Turbo Prune, Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'portals/horizon/**'
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: |
+        npm install -g pnpm turbo
+
+    - name: Run turbo prune
+      run: |
+        turbo prune --scope=horizon --docker
+
+    - name: Check and move files
+      run: |
+        cd out
+        mv full/portals/horizon/Dockerfile .
+        mv full/portals/horizon/.dockerignore .
+        mv full/portals/horizon/.elasticbeanstalk .
+
+    - name: Build Docker image
+      run: |
+        current_timestamp=$(date +%s)
+        docker build -t horizon:"$current_timestamp" .
+
+    - name: Zip out directory
+      run: |
+        zip -r out.zip out/ -x "*.git*"
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: out-zipped
+        path: out.zip
+
+    - name: Deploy Node package to AWS Elastic Beanstalk
+      uses: einaregilsson/beanstalk-deploy@v14
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+        application_name: horizon
+        environment_name: horizon-staging
+        version_label: ${{ github.sha }}
+        region: us-west-1
+        deployment_package: out.zip
+
+    - name: Clean up
+      run: |
+        cd ..
+        rm -rf out/
+        echo "Done."
