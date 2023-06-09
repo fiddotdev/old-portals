@@ -9,27 +9,30 @@ import { PortalsNav, PortalsButton } from 'ui';
 export default function Home() {
   return (
     <>
-     <PortalsNav.NavigationMenu>
+      <PortalsNav.NavigationMenu>
         <PortalsNav.NavigationMenuList>
           <PortalsNav.NavigationMenuItem>
-            <PortalsNav.NavigationMenuTrigger>Item One</PortalsNav.NavigationMenuTrigger>
+            <PortalsNav.NavigationMenuTrigger>
+              Item One
+            </PortalsNav.NavigationMenuTrigger>
             <PortalsNav.NavigationMenuContent>
-                <PortalsNav.NavigationMenuLink>Link</PortalsNav.NavigationMenuLink>
+              <PortalsNav.NavigationMenuLink>
+                Link
+              </PortalsNav.NavigationMenuLink>
             </PortalsNav.NavigationMenuContent>
           </PortalsNav.NavigationMenuItem>
         </PortalsNav.NavigationMenuList>
       </PortalsNav.NavigationMenu>
       <main
-      className={
-        'w-screen min-h-screen bg-dark-primary flex flex-col justify-center items-center'
-      }
-    >
-
-      <h1 className="text-6xl font-sans text-white font-bold">
-        Portals via EBS via GH Workflows
-      </h1>
-      <PortalsButton.Button variant={'default'}>GitHub</PortalsButton.Button>
-    </main>
+        className={
+          'w-screen min-h-screen bg-dark-primary flex flex-col justify-center items-center'
+        }
+      >
+        <h1 className="text-6xl font-sans text-white font-bold">
+          Portals via EBS via GH Workflows
+        </h1>
+        <PortalsButton.Button variant={'default'}>GitHub</PortalsButton.Button>
+      </main>
     </>
   );
 }
