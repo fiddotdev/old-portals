@@ -16,7 +16,7 @@
     "eslint-config-ts": "workspace:*",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.11",
-    "turbo": "^1.9.3"
+    "turbo": "^1.10.3"
   },
   "optionalDependencies": {
     "husky": "^8.0.3"
