@@ -1,4 +1,7 @@
-import { str, envsafe, num } from 'envsafe';
+import {envsafe, num, str} from 'envsafe';
+import * as dotenv from 'dotenv'
+
+dotenv.config();
 
 export const env = envsafe({
   NODE_ENV: str({
