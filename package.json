@@ -10,7 +10,8 @@
     "prettier": "prettier --check \"**/*.{ts,tsx,md}\"",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky install",
-    "test": "turbo test"
+    "test": "turbo test",
+    "gen-env": "turbo gen-env"
   },
   "devDependencies": {
     "eslint": "^7.32.0",

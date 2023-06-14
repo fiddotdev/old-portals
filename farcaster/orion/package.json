@@ -7,6 +7,7 @@
     "dev": "ts-node-dev --exit-child src/index.ts",
     "build": "tsc",
     "lint": "eslint 'src/**/*.{ts, tsx}'",
+    "gen-env": "sed 's/=.*/=/' .env > .env.example",
     "test": "jest"
   },
   "keywords": [],
