@@ -1,5 +1,5 @@
-import {envsafe, num, str} from 'envsafe';
-import * as dotenv from 'dotenv'
+import { envsafe, num, str } from 'envsafe';
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 

@@ -1,5 +1,5 @@
-import {env} from './utils/envsafe';
+import { env } from './utils/envsafe';
 
-console.log(env)
+console.log(env);
 
 export {};
