@@ -1,9 +1,9 @@
-import {testFunction} from '../index';
+import { testFunction } from '../index';
 
 describe('myFunction', () => {
-    it('should do something', () => {
-        const result = testFunction();
+  it('should do something', () => {
+    const result = testFunction();
 
-        expect(result).toBe(200);
-    });
+    expect(result).toBe(200);
+  });
 });
