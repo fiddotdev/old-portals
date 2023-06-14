@@ -3,3 +3,4 @@ packages:
   - "common/*"
   - "portals/*"
   - "farcaster/*"
+  - "templates/*"

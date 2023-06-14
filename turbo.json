@@ -10,6 +10,7 @@
     "lint": {},
     "lint:fix": {},
     "check-types": {},
+    "test": {},
     "dev": {
       "cache": false,
       "persistent": true

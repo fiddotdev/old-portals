@@ -32,6 +32,8 @@ To view more info about these, view the [Farcaster Documentation](./farcaster/RE
 
 To view more info about these, view the [Portals Documentation](./portals/README.md)
 
+### [Templates](./templates) holds templates for different apps. TS apps, rust apps, etc...
+
 ## Getting Started
 
 There's not a lot of stuff here currently, but if you'd still like to play around here, getting started is simple.
