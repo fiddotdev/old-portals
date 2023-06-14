@@ -1,5 +1,5 @@
-(async() => {
-    console.log('heyyy')
+(async () => {
+  console.log('heyyy');
 })();
 
 export {};
