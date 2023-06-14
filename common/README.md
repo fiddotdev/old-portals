@@ -8,9 +8,13 @@ Common holds packages that need to be shared between apps.
 
 Shared UI library
 
-### [eslint-config-custom](./eslint-config-ts)
+### [eslint-config-nextjs](./eslint-config-nextjs)
 
-Shared ESLint Configs
+ESLint config for NextJS apps
+
+### [eslint-config-ts](./eslint-config-ts)
+
+ESLint config for standard TS apps
 
 ### [tailwind-config](./tailwind-config)
 
