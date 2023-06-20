@@ -34,7 +34,9 @@ AWS.config.update({
 
       sendToSQS(event)
         .then((response) => {
-          console.log(`Message sent to SQS Queue: ${response.MessageId}`);
+          console.log(
+            `Sent Hub Message with ID ${event.id} to SQS: ${response.MessageId}`
+          );
         })
         .catch((e) => {
           console.error(`Failed to send message to the SQS Queue: ${e}`);
