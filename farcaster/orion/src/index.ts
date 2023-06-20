@@ -35,7 +35,7 @@ AWS.config.update({
       sendToSQS(event)
         .then((response) => {
           console.log(
-            `Sent Hub Message with ID ${event.id} to SQS: ${response.MessageId}`
+            `Successfully sent FC Hub Message with ID ${event.id} to SQS: ${response.MessageId}`
           );
         })
         .catch((e) => {
