@@ -2,7 +2,7 @@ name: Build & Deploy Orion
 
 on:
   push:
-    branches: [main, 'landon/prtls-11-create-ts-service-for-hub-db']
+    branches: [main']
     paths:
       - 'farcaster/orion/**'
 
