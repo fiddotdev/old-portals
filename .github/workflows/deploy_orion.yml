@@ -1,0 +1,59 @@
+name: Docker Build and Push to DO Registry
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'farcaster/orion/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_API_TOKEN }}
+
+      - name: Install kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
+
+      - name: Build Docker image
+        run: docker build . -f farcaster/orion/Dockerfile -t portals-orion
+
+      - name: Authenticate with DO Registry
+        run: doctl registry login
+
+      - name: Tag Docker image
+        run: docker tag portals-orion registry.digitalocean.com/portals-registry/portals-orion
+
+      - name: Push Docker image
+        run: docker push registry.digitalocean.com/portals-registry/portals-orion
+
+      - name: Choose Kube Cluster
+        run: doctl kubernetes cluster kubeconfig save ${{ secrets.K8_CLUSTER_UUID }}
+
+      - name: Update ESO
+        run: kubectl apply -f portals/external-secrets-operator
+
+      - name: Force ESO Resync
+        run: kubectl annotate es prod-orion-keys force-sync=$(date +%s) --overwrite
+
+      - name: Apply Kustomize Config
+        run: kubectl apply -k farcaster/orion/kustomize
+
+      - name: Restart Deployment
+        run: kubectl rollout restart deployment/orion
+
+      - name: View K8 Pods
+        run: kubectl get pods
+
+      - name: View K8 Services
+        run: kubectl get services
