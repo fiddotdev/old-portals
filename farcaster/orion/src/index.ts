@@ -6,7 +6,6 @@ import {
   HubRpcClient,
 } from '@farcaster/hub-nodejs';
 import AWS from 'aws-sdk';
-import { sendToSQS } from './helpers/sendToSQS';
 
 export const testFunction = () => {
   return 200;
@@ -35,13 +34,14 @@ AWS.config.update({
     for await (const anyEvent of stream) {
       const event = anyEvent as HubEvent;
 
-      sendToSQS(event)
-        .then((response) => {
-          console.log(`Message sent to SQS Queue: ${response.MessageId}`);
-        })
-        .catch((e) => {
-          console.error(`Failed to send message to the SQS Queue: ${e}`);
-        });
+      console.log(event);
+      // sendToSQS(event)
+      //   .then((response) => {
+      //     console.log(`Message sent to SQS Queue: ${response.MessageId}`);
+      //   })
+      //   .catch((e) => {
+      //     console.error(`Failed to send message to the SQS Queue: ${e}`);
+      //   });
     }
   } else {
     throw new Error('Client failed to subscribe to stream');

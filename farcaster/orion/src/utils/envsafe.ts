@@ -16,6 +16,10 @@ export const env = envsafe({
   SQS_API_VERSION: str({
     default: '2012-11-05',
   }),
-  AWS_ACCESS_KEY_ID: str(),
-  AWS_SECRET_ACCESS_KEY: str(),
+  ACCESS_KEY_ID: str({
+    allowEmpty: true,
+  }),
+  SECRET_ACCESS_KEY: str({
+    allowEmpty: true,
+  }),
 });
