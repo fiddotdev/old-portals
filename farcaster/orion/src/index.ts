@@ -34,7 +34,7 @@ AWS.config.update({
     for await (const anyEvent of stream) {
       const event = anyEvent as HubEvent;
 
-      console.log(event);
+      console.log(`Recieved an event ${event.id}`);
       // sendToSQS(event)
       //   .then((response) => {
       //     console.log(`Message sent to SQS Queue: ${response.MessageId}`);

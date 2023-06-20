@@ -2,7 +2,7 @@ name: Docker Build and Push to DO Registry
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'landon/prtls-11-create-ts-service-for-hub-db']
     paths:
       - 'farcaster/orion/**'
 
