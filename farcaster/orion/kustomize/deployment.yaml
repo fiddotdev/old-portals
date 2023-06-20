@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orion
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: orion
+  template:
+    metadata:
+      labels:
+        app: orion
+    spec:
+      containers:
+        - name: orion
+          image: registry.digitalocean.com/portals-registry/portals-orion:latest
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - secretRef:
+                name: prod-orion-keys
+            - secretRef:
+                name: orion-sqs-iam

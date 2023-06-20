@@ -1,0 +1,16 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: prod-orion-keys
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: parameterstore
+  target:
+    name: prod-orion-keys
+    creationPolicy: Owner
+  dataFrom:
+    - find:
+        tags:
+          environment: 'prod'
+          resource: 'orion'
