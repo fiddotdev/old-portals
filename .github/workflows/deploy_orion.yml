@@ -1,4 +1,4 @@
-name: Docker Build and Push to DO Registry
+name: Build & Deploy Orion
 
 on:
   push:
