@@ -1,20 +1,20 @@
-import { HubEvent } from '@farcaster/hub-nodejs';
-import { SendMessageResult } from 'aws-sdk/clients/sqs';
-import { env } from '../utils/envsafe';
-import AWS, { SQS } from 'aws-sdk';
+import {HubEvent} from '@farcaster/hub-nodejs';
+import {env} from '../utils/envsafe';
+import {SendMessageCommand, SendMessageCommandInput, SendMessageCommandOutput, SQSClient} from '@aws-sdk/client-sqs';
 
-const sqs = new AWS.SQS({
-  apiVersion: env.SQS_API_VERSION,
-  region: env.SQS_REGION,
+const sqsClient = new SQSClient({
+    apiVersion: env.SQS_API_VERSION,
+    region: env.SQS_REGION
 });
 
-const sendToSQS = async (message: HubEvent): Promise<SendMessageResult> => {
-  const params: SQS.Types.SendMessageRequest = {
-    MessageBody: JSON.stringify(message),
-    QueueUrl: env.SQS_URL,
-  };
+const sendToSQS = async (message: HubEvent): Promise<SendMessageCommandOutput> => {
+    const params: SendMessageCommandInput = {
+        MessageBody: JSON.stringify(message),
+        QueueUrl: env.SQS_URL,
+    };
 
-  return sqs.sendMessage(params).promise();
+    const command = new SendMessageCommand(params);
+    return sqsClient.send(command);
 };
 
-export { sendToSQS };
+export {sendToSQS};
