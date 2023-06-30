@@ -1,4 +1,4 @@
-import {envsafe, str} from 'envsafe';
+import {envsafe, num, str} from 'envsafe';
 import * as dotenv from 'dotenv';
 
 console.warn('--------------- Node Environment ---------------');
@@ -10,15 +10,19 @@ dotenv.config({
 });
 
 export const env = envsafe({
-    SQS_URL: str(),
-    SQS_REGION: str(),
-    SQS_API_VERSION: str({
-        default: '2012-11-05',
+    ORION_POSTGRES_HOST: str({
+        allowEmpty: true
     }),
-    AWS_ACCESS_KEY_ID: str({
+    ORION_POSTGRES_USERNAME: str({
         allowEmpty: true,
     }),
-    AWS_SECRET_ACCESS_KEY: str({
+    ORION_POSTGRES_PASSWORD: str({
+        allowEmpty: true,
+    }),
+    ORION_POSTGRES_PORT: num({
+        allowEmpty: true,
+    }),
+    ORION_POSTGRES_DB: str({
         allowEmpty: true,
     }),
 });

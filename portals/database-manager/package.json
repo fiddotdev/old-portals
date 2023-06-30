@@ -1,0 +1,34 @@
+{
+  "name": "database-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "migration:generate": "tsx scripts/genMigration.ts",
+    "migrate:up:prod": "cross-env NODE_ENV=production tsx scripts/migrateUp.ts",
+    "migrate:down:prod": "cross-env NODE_ENV=production tsx scripts/migrateDown.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/pg": "^8.10.2",
+    "dotenv": "^16.1.4",
+    "envsafe": "^2.0.3",
+    "eslint": "^7.32.0",
+    "eslint-config-ts": "workspace:*",
+    "tsconfig": "workspace:*",
+    "tsx": "3.12.7",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@farcaster/hub-nodejs": "^0.8.0",
+    "cross-env": "^7.0.3",
+    "kysely": "^0.25.0",
+    "pg": "^8.11.0",
+    "readline": "^1.3.0"
+  }
+}
