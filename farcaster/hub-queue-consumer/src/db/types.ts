@@ -1,7 +1,7 @@
 export interface MessagesTable {
-    id: string;
+  id: string;
 }
 
 export interface Database {
-    farcaster_messages: MessagesTable
+  farcaster_messages: MessagesTable;
 }
