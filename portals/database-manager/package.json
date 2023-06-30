@@ -9,6 +9,8 @@
     "migration:generate": "tsx scripts/genMigration.ts",
     "migrate:up:prod": "cross-env NODE_ENV=production tsx scripts/migrateUp.ts",
     "migrate:down:prod": "cross-env NODE_ENV=production tsx scripts/migrateDown.ts",
+    "migrate:up:dev": "cross-env NODE_ENV=development tsx scripts/migrateUp.ts",
+    "migrate:down:dev": "cross-env NODE_ENV=development tsx scripts/migrateDown.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
