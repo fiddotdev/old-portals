@@ -1,1 +1,1 @@
-export * from './models/OrionDB'
+export * from './models/OrionDB';
