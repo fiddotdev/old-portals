@@ -1,1 +1,1 @@
-export * from '@/src/models/FarcasterSchema';
+export * from '@/src/models/OrionDB';
