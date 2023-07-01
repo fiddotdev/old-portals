@@ -1,8 +1,17 @@
 {
-  "extends": "tsconfig/base.json",
+  "extends": [
+    "tsconfig/base.json"
+  ],
   "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
     "baseUrl": ".",
-    "outDir": "dist",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "target": "es6",
+    "module": "CommonJS",
+    "declaration": true,
     "paths": {
       "@/*": [
         "./*"
@@ -10,11 +19,6 @@
     }
   },
   "include": [
-    "."
-  ],
-  "exclude": [
-    "dist",
-    "build",
-    "node_modules"
+    "src/**/*.ts"
   ]
 }

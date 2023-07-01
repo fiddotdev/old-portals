@@ -1,1 +1,1 @@
-export * from '@/src/models/OrionDB';
+export * from './models/OrionDB'
