@@ -144,6 +144,9 @@ importers:
       '@types/pg':
         specifier: ^8.10.2
         version: 8.10.2
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       kysely:
         specifier: ^0.25.0
         version: 0.25.0
