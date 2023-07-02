@@ -1,10 +1,10 @@
-import {Message} from '@farcaster/hub-nodejs';
-import {storeMessages} from './storeMessages';
+import { Message } from '@farcaster/hub-nodejs';
+import { storeMessages } from './storeMessages';
 
 const onPruneMessage = async (messages: Message[]) => {
-    storeMessages(messages, 'prune').then(() => {
-        console.log(`Successfully pruned ${messages.length} messages`);
-    });
-}
+  storeMessages(messages, 'prune').then(() => {
+    console.log(`Successfully pruned ${messages.length} messages`);
+  });
+};
 
-export {onPruneMessage}
+export { onPruneMessage };
