@@ -2,7 +2,7 @@ name: Build & Deploy Hub Queue Consumer
 
 on:
   push:
-    branches: [ main' ]
+    branches: [ 'main' ]
     paths:
       - 'farcaster/hub-queue-consumer/**'
 

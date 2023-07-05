@@ -2,7 +2,7 @@ name: Build & Deploy Orion
 
 on:
   push:
-    branches: [main']
+    branches: [ 'main' ]
     paths:
       - 'farcaster/orion/**'
 
