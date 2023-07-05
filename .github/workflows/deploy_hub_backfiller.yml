@@ -1,4 +1,4 @@
-name: Build & Deploy Hub Queue Consumer
+name: Build & Deploy Hub Backfiller
 
 on:
   push:
@@ -48,9 +48,6 @@ jobs:
 
       - name: Apply Kustomize Config
         run: kubectl apply -k farcaster/hub-backfiller/kustomize
-
-      - name: Restart Deployment
-        run: kubectl rollout restart deployment/hub-backfiller
 
       - name: View K8 Pods
         run: kubectl get pods

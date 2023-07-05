@@ -3,6 +3,7 @@ kind: CronJob
 metadata:
   name: hub-backfiller
 spec:
+  #  run every day @ 4:30 AM
   schedule: "30 4 * * *"
   jobTemplate:
     spec:
