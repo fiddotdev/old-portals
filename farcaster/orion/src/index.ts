@@ -5,17 +5,12 @@ import {
   HubEventType,
   HubRpcClient,
 } from '@farcaster/hub-nodejs';
-import AWS from 'aws-sdk';
 import { sendToSQS } from './helpers/sendToSQS';
 
-AWS.config.update({
-  apiVersion: env.SQS_API_VERSION,
-  region: env.SQS_API_VERSION,
-});
-
 (async () => {
-  const client: HubRpcClient = getSSLHubRpcClient(env.HUB_RPC_URL);
+  console.log(env.HUB_RPC_URL);
 
+  const client: HubRpcClient = getSSLHubRpcClient(env.HUB_RPC_URL);
   const subResult = await client.subscribe({
     eventTypes: [
       HubEventType.MERGE_ID_REGISTRY_EVENT,
