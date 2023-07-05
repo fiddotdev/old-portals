@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main' ]
     paths:
-      - 'farcaster/hub_queue_consumer/**'
+      - 'farcaster/hub-queue-consumer/**'
 
 jobs:
   build:
