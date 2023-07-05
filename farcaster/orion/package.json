@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.354.0",
-    "@farcaster/hub-nodejs": "^0.8.0"
+    "@farcaster/hub-nodejs": "^0.8.0",
+    "kysely-postgres-js": "^1.1.1",
+    "postgres": "^3.3.5"
   }
 }

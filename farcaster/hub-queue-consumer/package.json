@@ -38,7 +38,9 @@
     "@types/pg": "^8.10.2",
     "cross-env": "^7.0.3",
     "kysely": "^0.25.0",
+    "kysely-postgres-js": "^1.1.1",
     "pg": "^8.11.0",
+    "postgres": "^3.3.5",
     "sqs-consumer": "^7.2.0"
   }
 }
