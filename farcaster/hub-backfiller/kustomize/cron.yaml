@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hub-backfiller
+spec:
+  schedule: "30 4 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: hub-backfiller
+              image: registry.digitalocean.com/portals-registry/portals-hub-backfiller:latest
+              envFrom:
+                - secretRef:
+                    name: prod-hub-backfiller-keys
+          restartPolicy: OnFailure

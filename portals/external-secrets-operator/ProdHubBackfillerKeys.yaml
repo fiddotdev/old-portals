@@ -1,0 +1,20 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: prod-hub-backfiller-keys
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: parameterstore
+  target:
+    name: prod-hub-backfiller-keys
+    creationPolicy: Owner
+  dataFrom:
+    - find:
+        path: /hub-backfiller/prod
+        name:
+          regexp: ".*"
+      rewrite:
+        - regexp:
+            source: "/hub-backfiller/prod/(.*)"
+            target: "$1"

@@ -1,0 +1,59 @@
+name: Build & Deploy Hub Queue Consumer
+
+on:
+  push:
+    branches: [ 'main' ]
+    paths:
+      - 'farcaster/hub-backfiller/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_API_TOKEN }}
+
+      - name: Install kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
+
+      - name: Build Docker image
+        run: docker build . -f farcaster/hub-backfiller/Dockerfile -t portals-hub-backfiller
+
+      - name: Authenticate with DO Registry
+        run: doctl registry login
+
+      - name: Tag Docker image
+        run: docker tag portals-hub-backfiller registry.digitalocean.com/portals-registry/portals-hub-backfiller
+
+      - name: Push Docker image
+        run: docker push registry.digitalocean.com/portals-registry/portals-hub-backfiller
+
+      - name: Choose Kube Cluster
+        run: doctl kubernetes cluster kubeconfig save ${{ secrets.K8_CLUSTER_UUID }}
+
+      - name: Update ESO
+        run: kubectl apply -f portals/external-secrets-operator
+
+      - name: Force ESO Resync
+        run: kubectl annotate es prod-hub-backfiller-keys force-sync=$(date +%s) --overwrite
+
+      - name: Apply Kustomize Config
+        run: kubectl apply -k farcaster/hub-backfiller/kustomize
+
+      - name: Restart Deployment
+        run: kubectl rollout restart deployment/hub-backfiller
+
+      - name: View K8 Pods
+        run: kubectl get pods
+
+      - name: View K8 Services
+        run: kubectl get services

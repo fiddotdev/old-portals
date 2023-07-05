@@ -9,7 +9,7 @@ WORKDIR /app
 RUN npm install -g pnpm
 RUN npm install -g turbo
 COPY . .
-RUN turbo prune --scope=orion --docker
+RUN turbo prune --scope=hub-backfiller --docker
 
 FROM base AS installer
 RUN apk add --no-cache libc6-compat
@@ -26,7 +26,7 @@ RUN pnpm install
 COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 
-RUN turbo run build --filter=orion...
+RUN turbo run build --filter=hub-backfiller...
 
 FROM base AS runner
 WORKDIR /app
@@ -40,4 +40,4 @@ COPY --from=installer /app .
 
 ENV NODE_ENV=production
 
-CMD node farcaster/orion/dist/index.js
+CMD node farcaster/hub-backfiller/dist/index.js
