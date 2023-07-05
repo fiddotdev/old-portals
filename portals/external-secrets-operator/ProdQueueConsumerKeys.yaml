@@ -1,20 +1,20 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: prod-orion-keys
+  name: prod-queue-consumer-keys
 spec:
   refreshInterval: 1h
   secretStoreRef:
     name: parameterstore
   target:
-    name: prod-orion-keys
+    name: prod-queue-consumer-keys
     creationPolicy: Owner
   dataFrom:
     - find:
-        path: /orion/prod
+        path: /queue-consumer/prod
         name:
           regexp: ".*"
       rewrite:
         - regexp:
-            source: "/orion/prod/(.*)"
+            source: "/queue-consumer/prod/(.*)"
             target: "$1"

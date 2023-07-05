@@ -20,5 +20,3 @@ spec:
           envFrom:
             - secretRef:
                 name: prod-orion-keys
-            - secretRef:
-                name: orion-sqs-iam

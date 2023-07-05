@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development ts-node-dev --exit-child src/index.ts",
+    "dev": "cross-env NODE_ENV=development tsx watch src/index.ts",
     "build": "tsc",
-    "start": "NODE_ENV=production node dist/index.js",
+    "start": "NODE_ENV=production tsx src/index.ts",
     "lint": "eslint 'src/**/*.{ts, tsx}'",
     "gen-env": "sed 's/=.*/=/' .env.development > .env.example",
     "migration:up": "tsx scripts/migrateUp.ts",
