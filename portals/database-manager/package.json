@@ -12,6 +12,7 @@
     "migrate:down:prod": "cross-env NODE_ENV=production tsx scripts/migrateDown.ts",
     "migrate:up:dev": "cross-env NODE_ENV=development tsx scripts/migrateUp.ts",
     "migrate:down:dev": "cross-env NODE_ENV=development tsx scripts/migrateDown.ts",
+    "gen-env": "sed 's/=.*/=/' .env.production > .env.example",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

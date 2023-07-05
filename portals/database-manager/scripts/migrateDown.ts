@@ -1,5 +1,5 @@
 import * as path from 'path';
-import pg, { PoolConfig } from 'pg';
+import { Pool, PoolConfig } from 'pg';
 import { promises as fs } from 'fs';
 import {
   FileMigrationProvider,
@@ -7,11 +7,9 @@ import {
   Migrator,
   PostgresDialect,
 } from 'kysely';
-import { OrionDB } from '@/src';
+import { OrionDB } from '../src';
 import * as readline from 'readline';
-import { env } from '@/src/utils/envSafe';
-
-const { Pool } = pg;
+import { env } from '../src/utils/envSafe';
 
 async function migrateDown() {
   const args = process.argv.slice(2);
@@ -30,6 +28,8 @@ async function migrateDown() {
           password: env.ORION_POSTGRES_PASSWORD,
           port: env.ORION_POSTGRES_PORT,
           database: env.ORION_POSTGRES_DB,
+          idleTimeoutMillis: 0,
+          connectionTimeoutMillis: 0,
         };
         break;
       }
@@ -67,6 +67,7 @@ async function migrateDown() {
       `Are you sure you want to migrate the package ${formattedNameArg} down? (yes/no)\n`,
       async (question) => {
         if (question === 'yes') {
+          console.log('Starting Migration Down');
           const { error, results } = await migrator.migrateDown();
 
           if (results && results[0]) {

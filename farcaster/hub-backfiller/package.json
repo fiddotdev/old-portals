@@ -1,10 +1,10 @@
 {
-  "name": "orion",
+  "name": "hub-backfiller",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development tsx watch src/index.ts",
+    "dev": "cross-env NODE_ENV=development tsx watch src/index.ts",
     "build": "tsc",
     "start": "NODE_ENV=production tsx src/index.ts",
     "lint": "eslint 'src/**/*.{ts, tsx}'",
@@ -22,6 +22,7 @@
     "eslint-config-ts": "workspace:*",
     "jest": "^29.5.0",
     "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "tsconfig": "workspace:*",
     "tsx": "^3.12.7",
@@ -29,6 +30,16 @@
   },
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.354.0",
-    "@farcaster/hub-nodejs": "^0.8.0"
+    "@farcaster/hub-nodejs": "^0.8.0",
+    "@portals/database-manager": "workspace:*",
+    "@types/pg": "^8.10.2",
+    "cross-env": "^7.0.3",
+    "fastq": "^1.15.0",
+    "kysely": "^0.25.0",
+    "kysely-postgres-js": "^1.1.1",
+    "pg": "^8.11.0",
+    "postgres": "^3.3.5",
+    "pretty-ms": "^8.0.0",
+    "sqs-consumer": "^7.2.0"
   }
 }
