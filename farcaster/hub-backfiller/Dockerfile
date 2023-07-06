@@ -21,6 +21,7 @@ COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 RUN npm install -g pnpm
 RUN npm install -g turbo
+RUN npm install -g tsx
 RUN pnpm install
 
 COPY --from=builder /app/out/full/ .
@@ -28,16 +29,4 @@ COPY turbo.json turbo.json
 
 RUN turbo run build --filter=hub-backfiller...
 
-FROM base AS runner
-WORKDIR /app
-
-RUN addgroup --system --gid 1001 expressjs
-RUN adduser --system --uid 1001 expressjs
-
-USER expressjs
-
-COPY --from=installer /app .
-
-ENV NODE_ENV=production
-
-CMD node farcaster/hub-backfiller/dist/index.js
+CMD pnpm start
