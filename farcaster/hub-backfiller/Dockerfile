@@ -29,4 +29,4 @@ COPY turbo.json turbo.json
 
 RUN turbo run build --filter=hub-backfiller...
 
-CMD pnpm start
+CMD pnpm start --filter=hub-backfiller
