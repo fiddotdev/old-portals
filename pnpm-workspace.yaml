@@ -1,5 +1,7 @@
 packages:
   # - "apps/*"
-  - "common/*"
-  - "portals/*"
-  - "farcaster/*"
+  - 'common/*'
+  - 'portals/*'
+  - 'farcaster/*'
+  - 'farcaster/**'
+
