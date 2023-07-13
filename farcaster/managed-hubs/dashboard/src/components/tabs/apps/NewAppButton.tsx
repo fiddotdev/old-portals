@@ -63,7 +63,7 @@ const NewAppButton = () => {
         message: undefined,
       });
     }
-  }, [appName]);
+  }, [appName, appStore?.apps, newAppItem]);
 
   const createNewApp = () => {
     setAppName('');

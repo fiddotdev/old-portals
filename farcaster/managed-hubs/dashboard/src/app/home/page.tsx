@@ -16,7 +16,7 @@ const AppHomepage = () => {
     if (tabDefinition.length === 0) {
       tabStore?.setTab(0);
     }
-  }, []);
+  }, [tabDefinition.length, tabStore]);
 
   return (
     <div className="w-screen min-h-screen flex flex-row">

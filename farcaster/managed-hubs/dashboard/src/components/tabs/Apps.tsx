@@ -48,7 +48,7 @@ const AppsPage = () => {
     <div className="w-full min-h-screen bg-white relative p-6 flex flex-col space-y-2">
       <h1 className="text-6xl font-bold text-black py-4">My Apps</h1>
       {appStore?.apps.map((app) => (
-        <Card className="w-[350px]">
+        <Card key={app.appId} className="w-[350px]">
           <CardHeader>
             <CardTitle>{app.appName}</CardTitle>
             <CardDescription>

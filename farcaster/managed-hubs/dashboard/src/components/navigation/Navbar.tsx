@@ -39,7 +39,7 @@ const Navbar = () => {
           className="pb-4"
         />
         {tabDefinitions.map((def) => (
-          <TooltipProvider>
+          <TooltipProvider key={def.id}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <div
